@@ -1,20 +1,17 @@
 #include<iostream>
-#include "string.h"
+#include "String.h"
 
 using namespace std;
 
 
 int main()
 {
-	String s("Hello");
-	s.ToUpper();
-	s.print();
-	String s2(" World");
-	s2.ToUpper();
-	s2.print();
+	String s("Hello"), s2("World");
 
-	String ss = s + s2;
-	ss.print();
+	s = s2;
+
+	s.print();
+
 
 	cin.get();
 	return 0;

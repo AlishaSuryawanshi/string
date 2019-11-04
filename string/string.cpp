@@ -1,5 +1,22 @@
 #include "String.h"
 
+void String::StrCopy(char * Buffer)
+{
+	this->Buffer = new char[Size];
+
+	for (int i = 0; i <= Size; i++)
+	{
+		this->Buffer[i] = Buffer[i];
+	}
+}
+
+void String::CalculateSize(char * Buffer)
+{
+	int i;
+	for (i = 0; Buffer[i] != '\0'; i++);
+	Size = i;
+}
+
 String::String()
 {
 }
@@ -11,17 +28,8 @@ String::~String()
 
 String::String(char * charStr)
 {
-	int i;
-	for (i = 0; charStr[i] != '\0'; i++);
-
-	this->Size = i;
-	this->Buffer = new char[i];
-
-	for (i = 0; i <= Size; i++)
-	{
-		this->Buffer[i] = charStr[i];
-	}
-
+	CalculateSize(charStr);
+	StrCopy(charStr);
 }
 
 int String::GetSize()
@@ -36,9 +44,18 @@ void String::ToUpper()
 			Buffer[i] = Buffer[i] - 32;
 }
 
-void String::operator=(char * c)
+void String::operator=(char * str)
 {
-	
+	delete Buffer;
+	CalculateSize(str);
+	StrCopy(str);
+}
+
+void String::operator=(String Source)
+{
+	Size = Source.Size;
+	delete Buffer;
+	StrCopy(Source.Buffer);
 }
 
 

@@ -1,11 +1,13 @@
 #pragma once
 #include<iostream>
 
-	class String
+class String
 {
 private:
 	char* Buffer;
 	int Size;
+	void StrCopy(char *);
+	void CalculateSize(char*);
 public:
 	String();
 	~String();
@@ -13,10 +15,9 @@ public:
 	int GetSize();
 	void ToUpper();
 	void operator=(char*);
+	void operator=(String);
 	//void operator=(String);
 	//friend std::ofstream& operator<<(String);
 	void print();
 	String operator+(String);
 };
-String.h
-Displaying Source.cpp.
